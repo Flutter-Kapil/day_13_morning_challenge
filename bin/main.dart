@@ -7,8 +7,21 @@
 // Examples:
 // lengthen("abcdefg", "ab") ➞ "abababa"
 // lengthen("ingenius", "forest") ➞ "forestfo"
-String lengthen(String word1, String word2){
-  return null;
+String lengthen(String word1, String word2) {
+  String newWord = '';
+  if (word1.length > word2.length) {
+    for (int i = 0; newWord.length < word1.length; i++) {
+      newWord = newWord + word2;
+    }
+    newWord = newWord.substring(0, word1.length);
+  } else {
+    for (int i = 0; newWord.length < word2.length; i++) {
+      newWord = newWord + word1;
+    }
+    newWord = newWord.substring(0, word2.length);
+  }
+
+  return newWord;
 }
 
 // Challenge 3
@@ -18,10 +31,20 @@ String lengthen(String word1, String word2){
 // Examples
 // findBrokenKeys("happy birthday", "hawwy birthday") ➞ ["p"]
 // findBrokenKeys("beethoven", "affthoif5") ➞ ["b", "e", "v", "n"]
-List findBrokenKeys(String correct, String typed){
-  return null;
+List findBrokenKeys(String correct, String typed) {
+  List brokenWords = [];
+  for (int i = 0; i < correct.length; i++) {
+    if (correct[i] != typed[i]) {
+      brokenWords.add(correct[i]);
+    }
+  }
+  return brokenWords.toSet().toList();
 }
 
-
 main() {
+  print(lengthen("abcdefg", "ab"));
+  print(lengthen("ingenius", "forest"));
+
+  print(findBrokenKeys("happy birthday", "hawwy birthday"));
+  print(findBrokenKeys("beethoven", "affthoif5"));
 }
